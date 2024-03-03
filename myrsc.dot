@@ -1,0 +1,31 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.dev (expand)" [label = "aws_instance.dev", shape = "box"]
+		"[root] aws_instance.dev1 (expand)" [label = "aws_instance.dev1", shape = "box"]
+		"[root] aws_security_group.tdev-sg (expand)" [label = "aws_security_group.tdev-sg", shape = "box"]
+		"[root] null_resource.ping (orphan)" [label = "null_resource.ping", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/null\"]" [label = "provider[\"registry.terraform.io/hashicorp/null\"]", shape = "diamond"]
+		"[root] var.ami" [label = "var.ami", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] var.sg_ingress" [label = "var.sg_ingress", shape = "note"]
+		"[root] var.tags" [label = "var.tags", shape = "note"]
+		"[root] aws_instance.dev (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_instance.dev (expand)" -> "[root] var.ami"
+		"[root] aws_instance.dev (expand)" -> "[root] var.region"
+		"[root] aws_instance.dev (expand)" -> "[root] var.tags"
+		"[root] aws_instance.dev1 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.tdev-sg (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_security_group.tdev-sg (expand)" -> "[root] var.sg_ingress"
+		"[root] null_resource.ping (orphan)" -> "[root] provider[\"registry.terraform.io/hashicorp/null\"]"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.dev (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.dev1 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group.tdev-sg (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/null\"] (close)" -> "[root] null_resource.ping (orphan)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/null\"] (close)"
+	}
+}
+
